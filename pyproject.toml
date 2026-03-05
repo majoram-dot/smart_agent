@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smart_agent"
+version = "0.1.0"
+description = "SmartAgent: 整合多项领先技术的全功能 AI Agent 框架"
+authors = [
+  { name="SmartAgent Team" },
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "huggingface-hub>=0.31.2,<1.0.0",
+  "requests>=2.32.3",
+  "rich>=13.9.4",
+  "jinja2>=3.1.4",
+  "pillow>=10.0.1",
+  "python-dotenv",
+  "litellm>=1.60.2",
+  "numpy>=1.21.2",
+  "sentence-transformers",
+  "faiss-cpu",
+  "rank-bm25",
+]
+
+[project.optional-dependencies]
+gradio = [
+  "gradio>=5.14.0",
+]
+openai = [
+  "openai>=1.58.1"
+]
+anthropic = [
+  "anthropic>=0.84.0"
+]
+mcp = [
+  "mcpadapt>=0.1.13",
+  "mcp",
+]
+toolkit = [
+  "ddgs>=9.0.0",
+  "markdownify>=0.14.1",
+]
+rag = [
+  "PyPDF2>=3.0.0",
+  "html2text>=2024.0.0",
+  "tiktoken>=0.7.0",
+  "beautifulsoup4>=4.12.0",
+  "markdown>=3.6",
+  "tqdm>=4.66.0",
+]
+vision = [
+  "helium",
+  "selenium",
+]
+docker = [
+  "docker>=7.1.0",
+  "websocket-client",
+]
+e2b = [
+  "e2b-code-interpreter>=1.0.3",
+]
+all = [
+  "smart_agent[gradio,openai,anthropic,mcp,toolkit,rag,vision,docker,e2b]",
+]
+dev = [
+  "smart_agent[all]",
+  "ruff>=0.9.0",
+  "pytest>=8.1.0",
+]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"smart_agent.prompts" = ["*.yaml"]
+
+[project.scripts]
+smartagent = "smart_agent.cli:main"

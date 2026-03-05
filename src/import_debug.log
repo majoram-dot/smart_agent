@@ -1,0 +1,22 @@
+python : Traceback (most recent call last):
+???? ?:1 ??: 1
++ python -c 'import smart_agent' 2>&1 | Out-File 
+-Encoding ASCII import ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Tra 
+   ceback (most recent call last)::String) [],   
+  RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<string>", line 1, in <module>
+    import smart_agent
+  File "E:\????\?????\agent\smolagents\smart_agen
+t\src\smart_agent\__init__.py", line 95, in <modu
+le>
+    from .core_memory import (
+    ...<8 lines>...
+    )
+ImportError: cannot import name 'MemoryItem' from
+ 'smart_agent.core_memory' (E:\????\?????\agent\s
+molagents\smart_agent\src\smart_agent\core_memory
+.py)

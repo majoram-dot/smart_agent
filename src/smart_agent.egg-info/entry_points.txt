@@ -1,0 +1,2 @@
+[console_scripts]
+smartagent = smart_agent.cli:main

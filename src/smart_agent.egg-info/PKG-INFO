@@ -1,0 +1,121 @@
+Metadata-Version: 2.4
+Name: smart_agent
+Version: 0.1.0
+Summary: SmartAgent: 整合 smolagents、hello-agent、TinyRAG 三个项目的核心功能的 AI Agent 框架
+Author: SmartAgent Team
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: huggingface-hub<1.0.0,>=0.31.2
+Requires-Dist: requests>=2.32.3
+Requires-Dist: rich>=13.9.4
+Requires-Dist: jinja2>=3.1.4
+Requires-Dist: pillow>=10.0.1
+Requires-Dist: python-dotenv
+Requires-Dist: litellm>=1.60.2
+Requires-Dist: numpy>=1.21.2
+Requires-Dist: sentence-transformers
+Requires-Dist: faiss-cpu
+Requires-Dist: rank-bm25
+Provides-Extra: gradio
+Requires-Dist: gradio>=5.14.0; extra == "gradio"
+Provides-Extra: openai
+Requires-Dist: openai>=1.58.1; extra == "openai"
+Provides-Extra: anthropic
+Requires-Dist: anthropic>=0.84.0; extra == "anthropic"
+Provides-Extra: mcp
+Requires-Dist: mcpadapt>=0.1.13; extra == "mcp"
+Requires-Dist: mcp; extra == "mcp"
+Provides-Extra: toolkit
+Requires-Dist: ddgs>=9.0.0; extra == "toolkit"
+Requires-Dist: markdownify>=0.14.1; extra == "toolkit"
+Provides-Extra: vision
+Requires-Dist: helium; extra == "vision"
+Requires-Dist: selenium; extra == "vision"
+Provides-Extra: docker
+Requires-Dist: docker>=7.1.0; extra == "docker"
+Requires-Dist: websocket-client; extra == "docker"
+Provides-Extra: e2b
+Requires-Dist: e2b-code-interpreter>=1.0.3; extra == "e2b"
+Provides-Extra: all
+Requires-Dist: smart_agent[anthropic,docker,e2b,gradio,mcp,openai,toolkit,vision]; extra == "all"
+Provides-Extra: dev
+Requires-Dist: smart_agent[all]; extra == "dev"
+Requires-Dist: ruff>=0.9.0; extra == "dev"
+Requires-Dist: pytest>=8.1.0; extra == "dev"
+
+# SmartAgent
+
+SmartAgent 是一个整合了 smolagents、hello-agent、TinyRAG 三个项目核心功能的 AI Agent 框架。
+
+## 功能特性
+
+- **Agent 核心**: CodeAgent 和 ToolCallingAgent，支持本地和远程代码执行
+- **LLM 支持**: 基于 LiteLLM，支持 100+ 大语言模型
+- **长期记忆系统**: 4种记忆类型（工作/情景/语义/感知）
+- **RAG 系统**: 向量存储、Embedding 模型、重排序、高级检索
+- **工具系统**: 搜索、网页访问、MCP 工具、笔记、终端等
+- **Web 界面**: 基于 Gradio 的友好用户界面
+
+## 快速开始
+
+### 环境要求
+
+- Python >= 3.10
+- conda (推荐)
+
+### 安装
+
+1. 创建并激活 conda 环境：
+
+```bash
+conda create -n smart_agent python=3.11 -y
+conda activate smart_agent
+```
+
+2. 安装依赖：
+
+```bash
+pip install -r requirements.txt
+```
+
+3. 配置环境变量：
+
+```bash
+cp .env.example .env
+```
+
+编辑 `.env` 文件，填入你的 API 密钥。
+
+### 基本使用
+
+```python
+from smart_agent import CodeAgent
+
+agent = CodeAgent()
+result = agent.run("Hello, SmartAgent!")
+```
+
+## 项目结构
+
+```
+smart_agent/
+├── src/smart_agent/
+│   ├── core/              # Agent 核心
+│   ├── llm/               # LLM 层
+│   ├── memory/            # 长期记忆系统
+│   ├── rag/               # RAG 系统
+│   ├── tools/             # 工具系统
+│   ├── monitoring/        # 监控与日志
+│   ├── mcp_client/        # MCP 客户端
+│   ├── serialization/     # 序列化
+│   └── ui/                # Web 界面
+├── tests/                 # 测试
+├── examples/              # 示例
+├── pyproject.toml         # 项目配置
+├── requirements.txt       # 依赖
+└── README.md              # 项目说明
+```
+
+## 许可证
+
+本项目整合了多个开源项目的代码，请参考各原始项目的许可证。

@@ -1,0 +1,17 @@
+# benchmarks/requirements-eval.txt
+# 这是 SmartAgent 专属的测评隔离依赖配置文件。
+# 用于保证即使老旧的库互相排斥，也不会污染核心系统。
+
+# 核心系统通过引用获得
+-e ..
+
+# 必须降级支持 BFCL 官方包
+numpy==1.26.4
+
+# 评估相关核心包
+bfcl-eval>=0.4.0
+datasets>=2.0.0
+
+# LLM 驱动支撑
+litellm>=1.60.2
+python-dotenv
